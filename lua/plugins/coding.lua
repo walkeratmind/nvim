@@ -7,7 +7,7 @@ return {
     config = function(_, opts)
       require("luasnip").config.set_config(opts)
       require "nvchad.configs.luasnip"
-      require "configs.snippets"
+      require "config.snippets"
     end,
   },
   {
@@ -26,7 +26,7 @@ return {
     ft = { "rust" },
     dependencies = "neovim/nvim-lspconfig",
     config = function()
-      require "configs.rustaceanvim"
+      require "config.rustaceanvim"
     end,
   },
   {

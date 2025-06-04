@@ -14,7 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 -- load lua modules little faster
 vim.loader.enable()
 
-local lazy_config = require "configs.lazy"
+local lazy_config = require "config.lazy"
 
 -- load plugins
 require("lazy").setup({
@@ -33,11 +33,11 @@ dofile(vim.g.base46_cache .. "defaults")
 dofile(vim.g.base46_cache .. "statusline")
 
 require "nvchad.autocmds"
-require "configs.autocmds"
-require "configs.commands"
-require "configs.diagnostic"
-require "options"
+require "config.autocmds"
+require "config.commands"
+require "config.diagnostic"
+require "config.options"
 
 vim.schedule(function()
-  require "mappings"
+  require "config.keymaps"
 end)

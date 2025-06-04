@@ -62,7 +62,7 @@ return {
     "folke/todo-comments.nvim",
     event = "BufReadPost",
     config = function()
-      require "configs.todo"
+      require "config.todo"
       -- dofile(vim.g.base46_cache .. "todo")
     end,
   },
@@ -85,7 +85,7 @@ return {
     -- lazy = false,
     event = "VeryLazy",
     config = function()
-      require "configs.autosession"
+      require "config.autosession"
     end,
   },
   {
