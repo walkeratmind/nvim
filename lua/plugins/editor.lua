@@ -63,7 +63,6 @@ return {
     event = "BufReadPost",
     config = function()
       require "config.todo"
-      -- dofile(vim.g.base46_cache .. "todo")
     end,
   },
   {

@@ -1,13 +1,6 @@
 local map = vim.keymap.set
 
-require "nvchad.mappings"
-
 map("n", ";", ":", { desc = "CMD enter command mode" })
-
--- map("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move lines down" })
--- map("n", "<A-k>", "<cmd>m .-2<cr>==", { desc = "Move lines up" })
--- map("v", "<A-j>", "<cmd>move+1<cr>gv=gv", { desc = "Move lines down" })
--- map("v", "<A-k>", "<cmd>move-2<cr>gv=gv", { desc = "Move lines up" })
 
 map(
   "n",
@@ -33,13 +26,6 @@ map("n", "<leader>gd", "<CMD>Lspsaga goto_definition<CR>", { desc = "Lspsaga got
 map("n", "<leader>k", "<CMD>Lspsaga hover_doc<CR>", { desc = "Lspsaga hover" })
 
 map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = "nvimtree toggle window" })
-
--- unmap nvchad keymaps
-map("n", "<leader>h", "<Nop>")
-map("n", "<C-c>", "<nop>")
-map("n", "<C-n>", "<nop>")
-map("n", "gi", "<nop>")
-map("n", "gd", "<nop>")
 
 map("i", "<C-b>", "<ESC>^i", { desc = "Move Beginning of line" })
 map("i", "<C-e>", "<End>", { desc = "Move End of line" })
@@ -91,8 +77,6 @@ map(
 map(
   { "n", "v" },
   "<leader>ff",
-  -- "<cmd>Telescope find_files find_command={'fd', '--type', 'f', '--hidden', '--follow', '--exclude', '.git', '--exclude', 'node_modules'}<CR>",
-  -- "<cmd>Telescope find_files find_command=fd,--type,f,--hidden,--follow,--exclude,.git node_modules<CR>",
   "<cmd>Telescope find_files find_command=rg,--ignore,--files,--sortr,accessed<CR>",
   { desc = "telescope find files" }
 )
@@ -105,11 +89,9 @@ map(
 )
 
 map({ "n", "v" }, "<C-p>", ":Telescope buffers<CR>", { desc = "Telescope Buffers" })
--- map("n", "<C-m>", "<cmd>Telescope marks<cr>", { desc = "Telescope Marks" })
 
 -- Harpoon
 local harpoon = require "harpoon"
--- Toggle previous & next buffers stored within Harpoon list
 map("n", "<C-h>", function()
   harpoon:list():prev()
 end, { desc = "Harpoon Previous" })

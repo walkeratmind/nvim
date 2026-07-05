@@ -1,12 +1,10 @@
 return {
   {
-    -- snippet plugin
     "L3MON4D3/LuaSnip",
     dependencies = "rafamadriz/friendly-snippets",
     opts = { history = true, updateevents = "TextChanged,TextChangedI" },
     config = function(_, opts)
       require("luasnip").config.set_config(opts)
-      require "nvchad.configs.luasnip"
       require "config.snippets"
     end,
   },
@@ -35,11 +33,7 @@ return {
     config = function(_, opts)
       local crates = require "crates"
       crates.setup(opts)
-      require("cmp").setup.buffer {
-        sources = { { name = "crates" } },
-      }
       crates.show()
-      require("core.utils").load_mappings "crates"
     end,
   },
   {
@@ -64,7 +58,7 @@ return {
   },
   {
     "folke/trouble.nvim",
-    opts = {}, -- for default options, refer to the configuration section for custom setup.
+    opts = {},
     cmd = "Trouble",
     keys = {
       {
@@ -117,8 +111,6 @@ return {
 
   {
     "danymat/neogen",
-    -- Uncomment next line if you want to follow only stable versions
-    -- version = "*"
     event = { "BufReadPost", "BufWritePost", "BufNewFile" },
     config = function()
       local neogen = require "neogen"
@@ -185,13 +177,10 @@ return {
     branch = "master",
 
     build = "sh install.sh",
-    -- do 'sh install.sh 1' if you want to force compile locally
-    -- (instead of fetching a binary from the github release). Requires Rust >= 1.65
     event = { "LspAttach" },
 
     config = function()
       require("sniprun").setup {
-        -- your options
         repl_enable = { "ipython" },
       }
       vim.keymap.set({ "n", "v" }, "<leader>sr", ":SnipRun<CR>", { silent = true })

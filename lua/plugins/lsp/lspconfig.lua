@@ -1,13 +1,15 @@
-local on_attach = require("nvchad.configs.lspconfig").on_attach
-local capabilities = require("blink.cmp").get_lsp_capabilities(require("nvchad.configs.lspconfig").capabilities)
+local on_attach = function(client, bufnr)
+  if client.server_capabilities.inlayHintProvider then
+    vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+  end
+end
+local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 return {
   {
     "neovim/nvim-lspconfig",
     dependencies = { "saghen/blink.cmp" },
     config = function()
-      require("nvchad.configs.lspconfig").defaults()
-
       local ok, _ = pcall(require, "ufo")
       if ok then
         capabilities.textDocument.foldingRange = {
