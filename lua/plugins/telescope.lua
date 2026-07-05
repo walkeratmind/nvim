@@ -31,11 +31,8 @@ return {
             ".docker",
             ".git",
             "yarn.lock",
-            "go.sum",
-            "go.mod",
             "tags",
             "mocks",
-            "refactoring",
             "^.git/",
             "^./.git/",
             "^node_modules/",
@@ -94,20 +91,24 @@ return {
       }
     end,
     config = function()
-      require("telescope").load_extension "file_browser"
-      require("telescope").load_extension "frecency"
+      local telescope = require "telescope"
+
+      pcall(telescope.load_extension, "file_browser")
+      pcall(telescope.load_extension, "frecency")
+      pcall(telescope.load_extension, "refactoring")
     end,
     dependencies = {
+      "nvim-lua/plenary.nvim",
       "debugloop/telescope-undo.nvim",
       -- "gnfisher/nvim-telescope-ctags-plus",
       "benfowler/telescope-luasnip.nvim",
       "FabianWirth/search.nvim",
+      "ThePrimeagen/refactoring.nvim",
       {
         "nvim-telescope/telescope-fzf-native.nvim",
         build = "make",
       },
       { "nvim-telescope/telescope-frecency.nvim" },
-      { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
     },
   },
 

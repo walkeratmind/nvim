@@ -118,7 +118,6 @@ map("n", "<C-l>", function()
 end, { desc = "Harpooon Next" })
 
 -- Refactoring
-require("telescope").load_extension "refactoring"
 map("n", "<leader>rf", function()
   require("telescope").extensions.refactoring.refactors()
 end, { desc = "Telescope Refactoring" })
